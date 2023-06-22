@@ -31,14 +31,14 @@ class _NavBarState extends State<NavBar> {
             onPressed: () {},
             icon: const Icon(Icons.menu, color: Colors.white),
           ),
-          const Expanded(
+          Expanded(
             flex: 1,
             child: Text(
               'Restaurant App',
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 20,
+                fontSize: screenWidth! * 0.045,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -64,7 +64,7 @@ class _NavBarState extends State<NavBar> {
   Widget _desktopNavBar() {
     return Container(
       height: 80,
-      color: Colors.blue,
+      color: const Color.fromARGB(255, 30, 14, 74),
       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -73,12 +73,12 @@ class _NavBarState extends State<NavBar> {
             onPressed: () {},
             icon: const Icon(Icons.menu, color: Colors.white),
           ),
-          const Text(
+          Text(
             'Restaurant App',
             style: TextStyle(
               color: Colors.white,
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
+              fontSize: screenWidth! * 0.025,
+              fontWeight: FontWeight.w600,
             ),
           ),
           Row(
