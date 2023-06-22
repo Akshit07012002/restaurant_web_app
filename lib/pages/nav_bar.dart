@@ -34,7 +34,7 @@ class _NavBarState extends State<NavBar> {
           Expanded(
             flex: 1,
             child: Text(
-              'Restaurant App',
+              'ManageResto',
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.white,
@@ -74,7 +74,7 @@ class _NavBarState extends State<NavBar> {
             icon: const Icon(Icons.menu, color: Colors.white),
           ),
           Text(
-            'Restaurant App',
+            'ManageResto',
             style: TextStyle(
               color: Colors.white,
               fontSize: screenWidth! * 0.025,

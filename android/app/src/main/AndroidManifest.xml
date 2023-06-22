@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="restaurant_web_app"
+        android:label="ManageResto"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

@@ -15,7 +15,7 @@ class MainApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Restaurant App',
       theme: ThemeData(
-        fontFamily: 'HindSiliguri',
+        fontFamily: 'Poppins',
         brightness: Brightness.light,
         primaryColor: AppColors.primary,
       ),

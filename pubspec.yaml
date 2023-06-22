@@ -10,12 +10,17 @@ dependencies:
   flutter:
     sdk: flutter
   responsive_builder: ^0.7.0
-  carousel_slider: ^4.2.1
+  carousel_slider: ^4.0.0
+  flutter_svg: ^2.0.7
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  # flutter_app_name: ^0.1.1
+
+# flutter_app_name:
+#   name: "ManageResto"
 
 flutter:
   uses-material-design: true
@@ -29,3 +34,10 @@ flutter:
         - asset: assets/fonts/HindSiliguri-SemiBold.ttf
         - asset: assets/fonts/HindSiliguri-Medium.ttf
         - asset: assets/fonts/HindSiliguri-Light.ttf
+        - asset: assets/fonts/Poppins/Poppins-Regular.ttf
+        - asset: assets/fonts/Poppins/Poppins-Bold.ttf
+        - asset: assets/fonts/Poppins/Poppins-SemiBold.ttf
+        - asset: assets/fonts/Poppins/Poppins-Medium.ttf
+        - asset: assets/fonts/Poppins/Poppins-Light.ttf
+        - asset: assets/fonts/Poppins/Poppins-ExtraLight.ttf
+        - asset: assets/fonts/Poppins/Poppins-Thin.ttf

@@ -3,6 +3,7 @@ import 'package:restaurant_web_app/pages/nav_bar.dart';
 import 'package:restaurant_web_app/utils/constants.dart';
 import 'package:restaurant_web_app/widgets/carousel.dart';
 import 'package:restaurant_web_app/widgets/menu_list.dart';
+import 'package:restaurant_web_app/widgets/title_card.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -21,7 +22,9 @@ class _HomePageState extends State<HomePage> {
         child: Container(
           child: Column(
             children: [
-              const NavBar(),
+              // const NavBar(),
+              SizedBox(height: screenHeight! * 0.05),
+              const TitleCard(),
               SizedBox(height: screenHeight! * 0.05),
               const Carousel(),
               SizedBox(height: screenHeight! * 0.05),
