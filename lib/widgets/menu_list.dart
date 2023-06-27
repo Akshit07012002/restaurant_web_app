@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:restaurant_web_app/models/category_model.dart';
 import 'package:restaurant_web_app/utils/constants.dart';
 
-class MenuList extends StatefulWidget {
-  const MenuList({super.key});
+class MenuList extends StatelessWidget {
+  final List<Categories> categories;
+  const MenuList({super.key, required this.categories});
 
-  @override
-  State<MenuList> createState() => _MenuListState();
-}
-
-class _MenuListState extends State<MenuList> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,7 +15,7 @@ class _MenuListState extends State<MenuList> {
       child: ListView.builder(
         physics: const NeverScrollableScrollPhysics(),
         itemCount: 4,
-        itemBuilder: (context, index) => _menuCategory(index + 1),
+        itemBuilder: (context, index) => _menuCategory(categories[index]!),
 
         // children: [
         //   _menuCategory(1),
@@ -30,10 +27,10 @@ class _MenuListState extends State<MenuList> {
     );
   }
 
-  _menuCategory(int i) => Card(
+  _menuCategory(Categories categories) => Card(
         child: ExpansionTile(
           title: Text(
-            'Menu Category $i',
+            '${categories.categoryName}',
             style: TextStyle(
               color: Colors.black,
               fontSize: screenWidth! * 0.035,
@@ -43,14 +40,14 @@ class _MenuListState extends State<MenuList> {
             ListView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              itemCount: 5,
+              itemCount: categories.dishes!.length,
               itemBuilder: (context, index) => ListTile(
                 title: Text(
-                  'Category Item ${index + 1}',
+                  '${categories.dishes![index].dishName}',
                   style: TextStyle(fontSize: screenWidth! * 0.03),
                 ),
                 subtitle: Text(
-                  'Item ${index + 1}',
+                  '\u20B9 ${categories.dishes![index].price}',
                   style: TextStyle(fontSize: screenWidth! * 0.025),
                 ),
               ),
