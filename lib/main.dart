@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:restaurant_web_app/bloc/bloc_observer.dart';
+import 'package:restaurant_web_app/bloc/cart/cart_bloc.dart';
 import 'package:restaurant_web_app/bloc/data_fetch/menu_fetch_bloc.dart';
 import 'package:restaurant_web_app/pages/home_page.dart';
+import 'package:restaurant_web_app/pages/success_page.dart';
 import 'package:restaurant_web_app/utils/colors.dart';
 
 void main() {
@@ -19,6 +21,7 @@ class MainApp extends StatefulWidget {
 
 class _MainAppState extends State<MainApp> {
   late MenuFetchBloc menuFetchBloc;
+  final CartBloc cartBloc = CartBloc();
 
   @override
   void initState() {
@@ -55,25 +58,40 @@ class _MainAppState extends State<MainApp> {
             //   ),
             //   home: const HomePage(),
             // );
-            return MaterialApp(
-              debugShowCheckedModeBanner: false,
-              title: 'Restaurant App',
-              theme: ThemeData(
-                fontFamily: 'Poppins',
-                brightness: Brightness.light,
-                primaryColor: AppColors.primary,
+            return MultiBlocProvider(
+              providers: [
+                BlocProvider(
+                  lazy: false,
+                  create: (context) => CartBloc(),
+                ),
+              ],
+              child: MaterialApp(
+                debugShowCheckedModeBanner: false,
+                title: 'Restaurant App',
+                theme: ThemeData(
+                  fontFamily: 'Poppins',
+                  brightness: Brightness.light,
+                  primaryColor: AppColors.primary,
+                ),
+                routes: {
+                  '/': (context) => HomePage(
+                        categories: state.response,
+                      ),
+                  '/success': (context) => const SuccessPage(),
+                },
+                initialRoute: '/',
+                // home: HomePage(categories: state.response),
+                // Scaffold(
+                //   body: Center(
+                //     child: ListView.builder(itemBuilder: (context, index) {
+                //       return ListTile(
+                //         title: Text(state.response[index].categoryName!),
+                //         // title: Text('hi'),
+                //       );
+                //     }),
+                //   ),
+                // ),
               ),
-              home: HomePage(categories: state.response), 
-              // Scaffold(
-              //   body: Center(
-              //     child: ListView.builder(itemBuilder: (context, index) {
-              //       return ListTile(
-              //         title: Text(state.response[index].categoryName!),
-              //         // title: Text('hi'),
-              //       );
-              //     }),
-              //   ),
-              // ),
             );
           }
           return const Center(

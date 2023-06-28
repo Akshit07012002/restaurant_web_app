@@ -1,5 +1,8 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:restaurant_web_app/bloc/cart/cart_bloc.dart';
 import 'package:restaurant_web_app/models/category_model.dart';
+import 'package:restaurant_web_app/models/dish_model.dart';
 import 'package:restaurant_web_app/utils/constants.dart';
 import 'package:restaurant_web_app/widgets/menu_list.dart';
 import 'package:restaurant_web_app/widgets/title_card.dart';
@@ -32,13 +35,16 @@ class HomePage extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
         ),
         child: PopupMenuButton(
-          position: PopupMenuPosition.over,
+          position: PopupMenuPosition.under,
+          offset: Offset(0, 2000),
           child: Center(
             child: Text(
-              'Menu',
+              'MENU',
               style: TextStyle(
                 color: Colors.white,
-                fontSize: screenWidth! * 0.03,
+                fontSize: screenWidth! * 0.04,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Poppins',
               ),
             ),
           ),
@@ -95,33 +101,42 @@ class HomePage extends StatelessWidget {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      body: Column(
-        children: [
-          SizedBox(height: screenHeight! * 0.05),
-          const TitleCard(),
-          Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  // const NavBar(),
+      body: BlocBuilder<CartBloc, CartState>(
+        builder: (context, state) {
+          List<Dishes> cartItems = state.cart;
+          return Column(
+            children: [
+              SizedBox(height: screenHeight! * 0.05),
+              const TitleCard(),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      // const NavBar(),
 
-                  SizedBox(height: screenHeight! * 0.05),
-                  // const Carousel(),
-                  // SizedBox(height: screenHeight! * 0.05),
-                  // const Text(
-                  //   'Our Menu',
-                  //   style: TextStyle(
-                  //     fontSize: 30,
-                  //     fontWeight: FontWeight.bold,
-                  //   ),
-                  // ),
-                  // SizedBox(height: screenHeight! * 0.05),
-                  MenuList(categories: categories, categoryCardKeys: categoryCardKeys),
-                ],
+                      SizedBox(height: screenHeight! * 0.05),
+                      // const Carousel(),
+                      // SizedBox(height: screenHeight! * 0.05),
+                      // const Text(
+                      //   'Our Menu',
+                      //   style: TextStyle(
+                      //     fontSize: 30,
+                      //     fontWeight: FontWeight.bold,
+                      //   ),
+                      // ),
+                      // SizedBox(height: screenHeight! * 0.05),
+                      MenuList(
+                          categories: categories,
+                          categoryCardKeys: categoryCardKeys,
+                          cartItems: cartItems
+                          ),
+                    ],
+                  ),
+                ),
               ),
-            ),
-          ),
-        ],
+            ],
+          );
+        },
       ),
     );
   }

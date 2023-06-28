@@ -31,8 +31,9 @@ class _TitleCardState extends State<TitleCard> {
                     child: Text(
                       'ManageResto',
                       style: TextStyle(
-                        fontSize: screenWidth! * 0.05,
+                        fontSize: screenWidth! * 0.06,
                         fontWeight: FontWeight.w900,
+                        fontFamily: 'Poppins',
                       ),
                     ),
                   ),
@@ -41,8 +42,9 @@ class _TitleCardState extends State<TitleCard> {
                     child: Text(
                       'Somewhere',
                       style: TextStyle(
-                        fontSize: screenWidth! * 0.03,
+                        fontSize: screenWidth! * 0.045,
                         fontWeight: FontWeight.bold,
+                        fontFamily: 'Poppins',
                       ),
                     ),
                   ),

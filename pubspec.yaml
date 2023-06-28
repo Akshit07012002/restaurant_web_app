@@ -16,6 +16,7 @@ dependencies:
   bloc: ^8.1.2
   equatable: ^2.0.5
   http: ^1.1.0
+  expansion_tile_card: ^3.0.0
 
 dev_dependencies:
   flutter_test:
