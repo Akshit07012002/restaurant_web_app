@@ -9,7 +9,10 @@ class MenuList extends StatelessWidget {
   final List<GlobalKey> categoryCardKeys;
   final List<Dishes> cartItems;
   const MenuList(
-      {super.key, required this.categories, required this.categoryCardKeys, required this.cartItems});
+      {super.key,
+      required this.categories,
+      required this.categoryCardKeys,
+      required this.cartItems});
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +50,18 @@ class MenuList extends StatelessWidget {
                 thickness: 1,
               ),
               itemBuilder: (context, index) => ListTile(
+                leading: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.network(
+                      'https://res.cloudinary.com/dqs8554a6/image/upload/v1679922050/vege_m7csce.jpg',
+                      height: 25,
+                      width: 25,
+                      // '${categories.dishes![index].dishImage}',
+                      // fit: BoxFit.cover,
+                    ),
+                  ],
+                ),
                 title: Text(
                   '${categories.dishes![index].dishName}',
                   style: TextStyle(
@@ -64,9 +79,14 @@ class MenuList extends StatelessWidget {
                   ),
                 ),
                 trailing: SizedBox(
-                    height: screenHeight! * 0.053,
-                    width: screenWidth! * 0.28,
-                    child: addToCartButton(context, cartItems, categories.dishes![index])),
+                  height: screenHeight! * 0.053,
+                  width: screenWidth! * 0.28,
+                  child: addToCartButton(
+                    context,
+                    // cartItems,
+                    categories.dishes![index],
+                  ),
+                ),
               ),
             ),
           ],
