@@ -4,7 +4,8 @@ import 'package:restaurant_web_app/utils/constants.dart';
 
 class MenuList extends StatelessWidget {
   final List<Categories> categories;
-  const MenuList({super.key, required this.categories});
+  final List<GlobalKey> categoryCardKeys;
+  const MenuList({super.key, required this.categories, required this.categoryCardKeys});
 
   @override
   Widget build(BuildContext context) {
@@ -14,21 +15,15 @@ class MenuList extends StatelessWidget {
           screenWidth! * 0.1, 0, screenWidth! * 0.1, screenHeight! * 0.05),
       child: ListView.builder(
         physics: const NeverScrollableScrollPhysics(),
-        itemCount: 4,
-        itemBuilder: (context, index) => _menuCategory(categories[index]!),
-
-        // children: [
-        //   _menuCategory(1),
-        //   _menuCategory(2),
-        //   _menuCategory(3),
-        //   _menuCategory(4),
-        // ],
+        itemCount: categories.length,
+        itemBuilder: (context, index) => _menuCategory(categories[index], categoryCardKeys[index]),
       ),
     );
   }
 
-  _menuCategory(Categories categories) => Card(
+  _menuCategory(Categories categories, GlobalKey expansionCardKey) => Card(
         child: ExpansionTile(
+          key: expansionCardKey,
           title: Text(
             '${categories.categoryName}',
             style: TextStyle(

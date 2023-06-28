@@ -1,14 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant_web_app/models/category_model.dart';
-import 'package:restaurant_web_app/pages/nav_bar.dart';
 import 'package:restaurant_web_app/utils/constants.dart';
-import 'package:restaurant_web_app/widgets/carousel.dart';
 import 'package:restaurant_web_app/widgets/menu_list.dart';
 import 'package:restaurant_web_app/widgets/title_card.dart';
 
 class HomePage extends StatelessWidget {
   final List<Categories> categories;
-  const HomePage({super.key, required this.categories});
+  HomePage({super.key, required this.categories});
+
+  final List<GlobalKey> categoryCardKeys = [
+    GlobalKey(),
+    GlobalKey(),
+    GlobalKey(),
+    GlobalKey(),
+    GlobalKey(),
+    GlobalKey(),
+    GlobalKey(),
+    GlobalKey(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -34,14 +43,53 @@ class HomePage extends StatelessWidget {
             ),
           ),
           itemBuilder: (context) => [
-            const PopupMenuItem(
-              child: Text('Menu 1'),
+            PopupMenuItem(
+              child: Text('${categories[0].categoryName}'),
+              onTap: () {
+                Scrollable.ensureVisible(categoryCardKeys[0].currentContext!);
+              },
             ),
-            const PopupMenuItem(
-              child: Text('Menu 2'),
+            PopupMenuItem(
+              child: Text('${categories[1].categoryName}'),
+              onTap: () {
+                Scrollable.ensureVisible(categoryCardKeys[1].currentContext!);
+              },
             ),
-            const PopupMenuItem(
-              child: Text('Menu 3'),
+            PopupMenuItem(
+              child: Text('${categories[2].categoryName}'),
+              onTap: () {
+                Scrollable.ensureVisible(categoryCardKeys[2].currentContext!);
+              },
+            ),
+            PopupMenuItem(
+              child: Text('${categories[3].categoryName}'),
+              onTap: () {
+                Scrollable.ensureVisible(categoryCardKeys[3].currentContext!);
+              },
+            ),
+            PopupMenuItem(
+              child: Text('${categories[4].categoryName}'),
+              onTap: () {
+                Scrollable.ensureVisible(categoryCardKeys[4].currentContext!);
+              },
+            ),
+            PopupMenuItem(
+              child: Text('${categories[5].categoryName}'),
+              onTap: () {
+                Scrollable.ensureVisible(categoryCardKeys[5].currentContext!);
+              },
+            ),
+            PopupMenuItem(
+              child: Text('${categories[6].categoryName}'),
+              onTap: () {
+                Scrollable.ensureVisible(categoryCardKeys[6].currentContext!);
+              },
+            ),
+            PopupMenuItem(
+              child: Text('${categories[7].categoryName}'),
+              onTap: () {
+                Scrollable.ensureVisible(categoryCardKeys[7].currentContext!);
+              },
             ),
           ],
         ),
@@ -68,7 +116,7 @@ class HomePage extends StatelessWidget {
                   //   ),
                   // ),
                   // SizedBox(height: screenHeight! * 0.05),
-                  MenuList(categories: categories),
+                  MenuList(categories: categories, categoryCardKeys: categoryCardKeys),
                 ],
               ),
             ),
