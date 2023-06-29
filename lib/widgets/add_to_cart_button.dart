@@ -10,11 +10,13 @@ BlocBuilder<CartBloc, CartState> addToCartButton(
   Dishes dish,
 ) {
   Map<String, dynamic> cartStash = {};
-  int totalCartSize = 0;
+  // int totalCartSize = 0;
 
   return BlocBuilder<CartBloc, CartState>(
     builder: (context, state) {
       Map<Dishes, int> cartItems = state.cart;
+      int totalCartSize = state.totalCartSize;
+
       if (!cartItems.containsKey(dish) || cartItems[dish] == 0) {
         return ElevatedButton(
           onPressed: () {
@@ -23,41 +25,61 @@ BlocBuilder<CartBloc, CartState> addToCartButton(
 
             // } else {
             // }
-            if (cartItems[dish] == 0) {
-              cartItems.remove(dish);
-            } else if (cartItems.containsKey(dish)) {
-            } else {
-              cartItems[dish] = 1;
-            }
-            context.read<CartBloc>().add(AddToCartEvent(dish));
-            print('cart size : ${cartItems[dish]}');
+            // if (cartItems[dish] == 0) {
+            //   cartItems.remove(dish);
+            // } else if (cartItems.containsKey(dish)) {
+            // } else {
+            cartItems[dish] = 0;
+            // }
 
-            cartItems.forEach((key, value) {
-              totalCartSize += value;
-            });
+            context.read<CartBloc>().add(AddToCartEvent(dish));
+            print('add button cart size : ${cartItems[dish]}');
+
+            print(state.cart);
 
             showBottomSheet(
               context: context,
               builder: (context) => Padding(
-                padding: const EdgeInsets.symmetric(vertical: 100),
-                child: ListTile(
-                  leading: const Icon(
-                    Icons.shopping_cart,
-                    color: Colors.black,
-                  ),
-                  title: Text(
-                    (totalCartSize == 1)
-                        ? 'You have $totalCartSize item in your cart'
-                        : 'You have $totalCartSize items in your cart',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: screenWidth! * 0.04,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Poppins',
-                    ),
-                  ),
-                ),
+                padding: const EdgeInsets.symmetric(vertical: 80),
+                child: FutureBuilder(
+                    future: Future.delayed(const Duration(seconds: 2)),
+                    builder: (context, snapshot) {
+                      print('cart size : $totalCartSize');
+                      return ListTile(
+                        leading: const Icon(
+                          Icons.shopping_cart,
+                          color: Colors.black,
+                        ),
+                        title: Text(
+                          (totalCartSize == 1)
+                              ? 'You have $totalCartSize item in your cart'
+                              : 'You have $totalCartSize items in your cart',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: screenWidth! * 0.04,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Poppins',
+                          ),
+                        ),
+                        trailing: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.black,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              padding: EdgeInsets.symmetric(
+                                horizontal:
+                                    MediaQuery.of(context).size.width * 0.05,
+                                vertical: MediaQuery.of(context).size.height * 0.02,
+                              ),
+                            ),
+                            child: const Text('Checkout'),
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/order');
+                            }),
+                      );
+                    }),
               ),
             );
           },
@@ -68,7 +90,7 @@ BlocBuilder<CartBloc, CartState> addToCartButton(
             ),
             padding: EdgeInsets.symmetric(
               horizontal: MediaQuery.of(context).size.width * 0.05,
-              // vertical: MediaQuery.of(context).size.height * 0.02,
+              vertical: MediaQuery.of(context).size.height * 0.02,
             ),
           ),
           child: Text(
@@ -95,37 +117,57 @@ BlocBuilder<CartBloc, CartState> addToCartButton(
                 flex: 2,
                 child: InkWell(
                   onTap: () {
-                    cartItems[dish] = cartItems[dish]! - 1;
+                    // cartItems[dish] = cartItems[dish]! - 1;
                     context.read<CartBloc>().add(RemoveFromCartEvent(dish));
                     print('cart size : ${cartItems[dish]}');
 
-                    
-                    cartItems.forEach((key, value) {
-                      totalCartSize += value;
-                    });
+                    print(state.cart);
 
                     showBottomSheet(
                       context: context,
                       builder: (context) => Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 100),
-                        child: ListTile(
-                          leading: const Icon(
-                            Icons.shopping_cart,
-                            color: Colors.black,
-                          ),
-                          title: Text(
-                            (totalCartSize == 1)
-                                ? 'You have $totalCartSize item in your cart'
-                                : 'You have $totalCartSize items in your cart',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: screenWidth! * 0.04,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Poppins',
-                            ),
-                          ),
-                        ),
+                        padding: const EdgeInsets.symmetric(vertical: 80),
+                        child: FutureBuilder(
+                            future: Future.delayed(const Duration(seconds: 2)),
+                            builder: (context, snapshot) {
+                              print('cart size : $totalCartSize');
+
+                              return ListTile(
+                                leading: const Icon(
+                                  Icons.shopping_cart,
+                                  color: Colors.black,
+                                ),
+                                title: Text(
+                                  (totalCartSize == 1)
+                                      ? 'You have $totalCartSize item in your cart'
+                                      : 'You have $totalCartSize items in your cart',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: screenWidth! * 0.04,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'Poppins',
+                                  ),
+                                ),
+                                trailing: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: Colors.black,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(5),
+                                      ),
+                                      padding: EdgeInsets.symmetric(
+                                        horizontal:
+                                            MediaQuery.of(context).size.width *
+                                                0.05,
+                                        vertical: MediaQuery.of(context).size.height * 0.02,
+                                      ),
+                                    ),
+                                    child: const Text('Checkout'),
+                                    onPressed: () {
+                                      Navigator.pushNamed(context, '/order');
+                                    }),
+                              );
+                            }),
                       ),
                     );
                   },
@@ -168,36 +210,58 @@ BlocBuilder<CartBloc, CartState> addToCartButton(
                 flex: 2,
                 child: InkWell(
                   onTap: () {
-                    cartItems[dish] = cartItems[dish]! + 1;
+                    // cartItems[dish] = cartItems[dish]! + 1;
 
                     context.read<CartBloc>().add(AddToCartEvent(dish));
                     print('cart size : ${cartItems[dish]}');
-                    cartItems.forEach((key, value) {
-                      totalCartSize += value;
-                    });
+
+                    print(state.cart);
 
                     showBottomSheet(
                       context: context,
                       builder: (context) => Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 100),
-                        child: ListTile(
-                          leading: const Icon(
-                            Icons.shopping_cart,
-                            color: Colors.black,
-                          ),
-                          title: Text(
-                            (totalCartSize == 1)
-                                ? 'You have $totalCartSize item in your cart'
-                                : 'You have $totalCartSize items in your cart',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: screenWidth! * 0.04,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Poppins',
-                            ),
-                          ),
-                        ),
+                        padding: const EdgeInsets.symmetric(vertical: 80),
+                        child: FutureBuilder(
+                            future: Future.delayed(const Duration(seconds: 2)),
+                            builder: (context, snapshot) {
+                              print('cart size : $totalCartSize');
+
+                              return ListTile(
+                                leading: const Icon(
+                                  Icons.shopping_cart,
+                                  color: Colors.black,
+                                ),
+                                title: Text(
+                                  (totalCartSize == 1)
+                                      ? 'You have $totalCartSize item in your cart'
+                                      : 'You have $totalCartSize items in your cart',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: screenWidth! * 0.04,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'Poppins',
+                                  ),
+                                ),
+                                trailing: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: Colors.black,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(5),
+                                      ),
+                                      padding: EdgeInsets.symmetric(
+                                        horizontal:
+                                            MediaQuery.of(context).size.width *
+                                                0.05,
+                                        vertical: MediaQuery.of(context).size.height * 0.02,
+                                      ),
+                                    ),
+                                    child: const Text('Checkout'),
+                                    onPressed: () {
+                                      Navigator.pushNamed(context, '/order');
+                                    }),
+                              );
+                            }),
                       ),
                     );
                   },

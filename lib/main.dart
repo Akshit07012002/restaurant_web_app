@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:restaurant_web_app/bloc/bloc_observer.dart';
 import 'package:restaurant_web_app/bloc/cart/cart_bloc.dart';
 import 'package:restaurant_web_app/bloc/data_fetch/menu_fetch_bloc.dart';
+import 'package:restaurant_web_app/pages/checkout_page.dart';
 import 'package:restaurant_web_app/pages/home_page.dart';
 import 'package:restaurant_web_app/pages/success_page.dart';
 import 'package:restaurant_web_app/utils/colors.dart';
@@ -77,6 +78,7 @@ class _MainAppState extends State<MainApp> {
                   '/': (context) => HomePage(
                         categories: state.response,
                       ),
+                  '/order': (context) => const CheckoutPage(),
                   '/success': (context) => const SuccessPage(),
                 },
                 initialRoute: '/',

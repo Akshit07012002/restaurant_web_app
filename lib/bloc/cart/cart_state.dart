@@ -4,38 +4,43 @@ part of 'cart_bloc.dart';
 
 abstract class CartState {
   final Map<Dishes, int> cart;
-  const CartState(this.cart);
+  final int totalCartSize;
+  const CartState(this.cart, this.totalCartSize);
 
   @override
   List<Object> get props => [cart];
 }
 
 class CartInitial extends CartState {
-  CartInitial(Map<Dishes, int> cart) : super(cart);
+  CartInitial(Map<Dishes, int> cart) : super(cart, 0);
 }
 
 class CartStateSuccess extends CartState {
   final Map<Dishes, int> cart;
+  final int totalCartSize;
 
-  CartStateSuccess(this.cart) : super(cart);
+  CartStateSuccess(this.cart, this.totalCartSize) : super(cart, totalCartSize);
 }
 
 class CartStateFailure extends CartState {
   final Map<Dishes, int> cart;
+  final int totalCartSize;
 
-  CartStateFailure(this.cart) : super(cart);
+  CartStateFailure(this.cart, this.totalCartSize) : super(cart, totalCartSize);
 }
 
 class CartStateLoading extends CartState {
   final Map<Dishes, int> cart;
+  final int totalCartSize;
 
-  CartStateLoading(this.cart) : super(cart);
+  CartStateLoading(this.cart, this.totalCartSize) : super(cart, totalCartSize);
 }
 
 class AddToCart extends CartState {
   final Map<Dishes, int> cart;
+  final int totalCartSize;
 
-  AddToCart(this.cart) : super(cart);
+  AddToCart(this.cart, this.totalCartSize) : super(cart, totalCartSize);
 
   @override
   List<Object> get props => [cart];
@@ -46,8 +51,9 @@ class AddToCart extends CartState {
 
 class RemoveFromCart extends CartState {
   final Map<Dishes, int> cart;
+  final int totalCartSize;
 
-  RemoveFromCart(this.cart) : super(cart);
+  RemoveFromCart(this.cart, this.totalCartSize) : super(cart, totalCartSize);
 
   @override
   List<Object> get props => [cart];
@@ -58,8 +64,9 @@ class RemoveFromCart extends CartState {
 
 class ClearCart extends CartState {
   final Map<Dishes, int> cart;
+  final int totalCartSize;
 
-  ClearCart(this.cart) : super(cart);
+  ClearCart(this.cart, this.totalCartSize) : super(cart, totalCartSize);
 
   @override
   List<Object> get props => [cart];
