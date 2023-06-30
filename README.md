@@ -1,15 +1,18 @@
 # ManageResto : restaurant_web_app
 
-# Restaurant QR Menu Flutter Project
+## Restaurant QR Menu Flutter Project
 
 ## Welcome to the ManageResto Restaurant QR Menu Flutter web project repository on GitHub! This repository contains the source code and resources for a Flutter-BLoC-based mobile application that serves as a digital menu for restaurants using QR code scanning. The app is designed to provide customers with easy, fast, and touch-less ordering options, enhancing their dining experience.
 
 # Features
 • QR Code Scanning: Customers can scan a QR code placed on their table to instantly access the restaurant's digital menu on their mobile device.
+
 • Real-time Menu Updates: The app utilizes Firebase backend to ensure that the displayed menu is always up to date with the latest items, prices, and availability.
 Comprehensive Menu Details: Customers can view item descriptions, prices, and images, enabling them to make informed decisions.
+
 • Customizable Orders: Users can easily customize their orders, select quantities, and add special instructions.
 Fast and Accurate Order Placement: Orders are sent directly to the kitchen, minimizing errors and miscommunication.
+
 • Contactless Dining: The touch-less nature of the app reduces the need for physical menus and minimizes face-to-face interactions, promoting hygiene and safety.
 
 # Installation
