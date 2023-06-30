@@ -40,23 +40,24 @@ BlocBuilder<CartBloc, CartState> addToCartButton(
             showBottomSheet(
               context: context,
               builder: (context) => Padding(
-                padding: const EdgeInsets.symmetric(vertical: 80),
+                padding: const EdgeInsets.only(top: 40, bottom: 15),
                 child: FutureBuilder(
                     future: Future.delayed(const Duration(seconds: 2)),
                     builder: (context, snapshot) {
                       print('cart size : $totalCartSize');
                       return ListTile(
+                        contentPadding:
+                            const EdgeInsets.symmetric(horizontal: 20),
                         leading: const Icon(
-                          Icons.shopping_cart,
+                          Icons.shopping_bag_outlined,
                           color: Colors.black,
                         ),
                         title: Text(
                           (totalCartSize == 1)
                               ? 'You have $totalCartSize item in your cart'
                               : 'You have $totalCartSize items in your cart',
-                          textAlign: TextAlign.center,
+                          textAlign: TextAlign.left,
                           style: TextStyle(
-                            color: Colors.black,
                             fontSize: screenWidth! * 0.04,
                             fontWeight: FontWeight.bold,
                             fontFamily: 'Poppins',
@@ -71,10 +72,14 @@ BlocBuilder<CartBloc, CartState> addToCartButton(
                               padding: EdgeInsets.symmetric(
                                 horizontal:
                                     MediaQuery.of(context).size.width * 0.05,
-                                vertical: MediaQuery.of(context).size.height * 0.02,
+                                vertical:
+                                    MediaQuery.of(context).size.height * 0.02,
                               ),
                             ),
-                            child: const Text('Checkout'),
+                            child: Text(
+                              'Checkout',
+                              style: TextStyle(color: Colors.yellow[400]),
+                            ),
                             onPressed: () {
                               Navigator.pushNamed(context, '/order');
                             }),
@@ -126,24 +131,25 @@ BlocBuilder<CartBloc, CartState> addToCartButton(
                     showBottomSheet(
                       context: context,
                       builder: (context) => Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 80),
+                        padding: const EdgeInsets.only(top: 40, bottom: 15),
                         child: FutureBuilder(
                             future: Future.delayed(const Duration(seconds: 2)),
                             builder: (context, snapshot) {
                               print('cart size : $totalCartSize');
 
                               return ListTile(
+                                contentPadding:
+                                    const EdgeInsets.symmetric(horizontal: 20),
                                 leading: const Icon(
-                                  Icons.shopping_cart,
+                                  Icons.shopping_bag_outlined,
                                   color: Colors.black,
                                 ),
                                 title: Text(
                                   (totalCartSize == 1)
                                       ? 'You have $totalCartSize item in your cart'
                                       : 'You have $totalCartSize items in your cart',
-                                  textAlign: TextAlign.center,
+                                  textAlign: TextAlign.left,
                                   style: TextStyle(
-                                    color: Colors.black,
                                     fontSize: screenWidth! * 0.04,
                                     fontWeight: FontWeight.bold,
                                     fontFamily: 'Poppins',
@@ -159,10 +165,16 @@ BlocBuilder<CartBloc, CartState> addToCartButton(
                                         horizontal:
                                             MediaQuery.of(context).size.width *
                                                 0.05,
-                                        vertical: MediaQuery.of(context).size.height * 0.02,
+                                        vertical:
+                                            MediaQuery.of(context).size.height *
+                                                0.02,
                                       ),
                                     ),
-                                    child: const Text('Checkout'),
+                                    child: Text(
+                                      'Checkout',
+                                      style:
+                                          TextStyle(color: Colors.yellow[400]),
+                                    ),
                                     onPressed: () {
                                       Navigator.pushNamed(context, '/order');
                                     }),
@@ -220,24 +232,25 @@ BlocBuilder<CartBloc, CartState> addToCartButton(
                     showBottomSheet(
                       context: context,
                       builder: (context) => Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 80),
+                        padding: const EdgeInsets.only(top: 40, bottom: 15),
                         child: FutureBuilder(
                             future: Future.delayed(const Duration(seconds: 2)),
                             builder: (context, snapshot) {
                               print('cart size : $totalCartSize');
 
                               return ListTile(
+                                contentPadding:
+                                    const EdgeInsets.symmetric(horizontal: 20),
                                 leading: const Icon(
-                                  Icons.shopping_cart,
+                                  Icons.shopping_bag_outlined,
                                   color: Colors.black,
                                 ),
                                 title: Text(
                                   (totalCartSize == 1)
                                       ? 'You have $totalCartSize item in your cart'
                                       : 'You have $totalCartSize items in your cart',
-                                  textAlign: TextAlign.center,
+                                  textAlign: TextAlign.left,
                                   style: TextStyle(
-                                    color: Colors.black,
                                     fontSize: screenWidth! * 0.04,
                                     fontWeight: FontWeight.bold,
                                     fontFamily: 'Poppins',
@@ -253,10 +266,16 @@ BlocBuilder<CartBloc, CartState> addToCartButton(
                                         horizontal:
                                             MediaQuery.of(context).size.width *
                                                 0.05,
-                                        vertical: MediaQuery.of(context).size.height * 0.02,
+                                        vertical:
+                                            MediaQuery.of(context).size.height *
+                                                0.02,
                                       ),
                                     ),
-                                    child: const Text('Checkout'),
+                                    child: Text(
+                                      'Checkout',
+                                      style:
+                                          TextStyle(color: Colors.yellow[400]),
+                                    ),
                                     onPressed: () {
                                       Navigator.pushNamed(context, '/order');
                                     }),

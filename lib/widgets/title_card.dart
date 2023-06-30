@@ -14,6 +14,7 @@ class _TitleCardState extends State<TitleCard> {
     return Padding(
       padding: EdgeInsets.all(screenWidth! * 0.02),
       child: Card(
+        elevation: 10,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(20),

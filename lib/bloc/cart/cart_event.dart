@@ -34,7 +34,7 @@ class RemoveFromCartEvent extends CartEvent {
 } 
 
 class ClearCartEvent extends CartEvent {
-  final List<Dishes> cart;
+  final Map<Dishes, int> cart;
 
   const ClearCartEvent(this.cart);
 
