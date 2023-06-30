@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:restaurant_web_app/bloc/cart/cart_bloc.dart';
 import 'package:restaurant_web_app/models/dish_model.dart';
 import 'package:restaurant_web_app/pages/success_page.dart';
+import 'package:restaurant_web_app/utils/constants.dart';
 
 void showCustomDialog(BuildContext context) {
   showGeneralDialog(
@@ -16,17 +17,20 @@ void showCustomDialog(BuildContext context) {
         builder: (context, state) {
           Map<Dishes, int> cartItems = state.cart;
           int totalCartSize = state.totalCartSize;
-          return Material(
-            type: MaterialType.transparency,
-            child: Center(
+          return Scaffold(
+            // type: MaterialType.transparency,
+            resizeToAvoidBottomInset: false,
+            backgroundColor: Colors.transparent,
+            body: Center(
               child: Container(
-                height: 240,
+                height: screenHeight! * 0.5,
                 margin: const EdgeInsets.symmetric(horizontal: 20),
+                padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(40)),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     const Text(
                       'Enter your contact information',
@@ -34,24 +38,33 @@ void showCustomDialog(BuildContext context) {
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                       textAlign: TextAlign.left,
                     ),
-                    const Text(
-                      'Please enter your name and phone number',
-                      style: TextStyle(
-                        fontSize: 16,
-                      ),
-                      textAlign: TextAlign.left,
+                    const SizedBox(
+                      height: 15,
                     ),
+                    // const Text(
+                    //   'Please enter your name and phone number',
+                    //   style: TextStyle(
+                    //     fontSize: 16,
+                    //   ),
+                    //   textAlign: TextAlign.left,
+                    // ),
                     const TextField(
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: 'Name',
                       ),
                     ),
+                    const SizedBox(
+                      height: 10,
+                    ),
                     const TextField(
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: 'Phone Number',
                       ),
+                    ),
+                    const SizedBox(
+                      height: 10,
                     ),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(

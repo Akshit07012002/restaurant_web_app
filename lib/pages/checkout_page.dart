@@ -15,76 +15,139 @@ class CheckoutPage extends StatelessWidget {
       Map<Dishes, int> cartItems = state.cart;
       int totalCartSize = state.totalCartSize;
       return Scaffold(
-          body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const SizedBox(height: 100),
-          const Text(
-            'Table No : ',
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
-              fontFamily: 'Poppins',
+          resizeToAvoidBottomInset: false,
+          appBar: AppBar(
+            backgroundColor: Colors.black,
+            centerTitle: true,
+            title: Text(
+              'Checkout',
+              style: TextStyle(
+                  color: Colors.yellow[400],
+                  fontSize: screenWidth! * 0.05,
+                  fontWeight: FontWeight.w900),
             ),
+            toolbarHeight: screenHeight! * 0.1,
           ),
-          const SizedBox(height: 50),
-          const Text(
-            'ITEMS(S) ADDED',
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
-              fontFamily: 'Poppins',
-            ),
-          ),
-          const SizedBox(height: 50),
-          SizedBox(
-            height: screenHeight! * 0.5,
-            child: ListView.builder(
-              itemCount: cartItems.length,
-              itemBuilder: (context, index) => ListTile(
-                title: Text(
-                  '${cartItems.keys.elementAt(index).dishName}',
-                  style: const TextStyle(
+          body: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Table ID :',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: screenWidth! * 0.05,
+                        fontWeight: FontWeight.w800,
+                        fontFamily: 'Poppins',
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      tableId,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: screenWidth! * 0.035,
+                        fontWeight: FontWeight.w400,
+                        fontFamily: 'Poppins',
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Divider(
+                  indent: screenWidth! * 0.1,
+                  endIndent: screenWidth! * 0.1,
+                  thickness: 2,
+                  color: Colors.black,
+                ),
+                Text(
+                  'Items(s) added',
+                  style: TextStyle(
                     color: Colors.black,
-                    fontSize: 20,
+                    fontSize: screenWidth! * 0.045,
                     fontWeight: FontWeight.bold,
                     fontFamily: 'Poppins',
                   ),
                 ),
-                trailing: Text(
-                  '${cartItems.values.elementAt(index)}',
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'Poppins',
+                Divider(
+                  indent: screenWidth! * 0.1,
+                  endIndent: screenWidth! * 0.1,
+                  thickness: 2,
+                  color: Colors.black,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                SizedBox(
+                  height: screenHeight! * 0.5,
+                  child: ScrollbarTheme(
+                    data: ScrollbarThemeData(
+                      thumbColor: MaterialStateProperty.all(Colors.yellow[400]),
+                      trackColor: MaterialStateProperty.all(Colors.transparent),
+                      crossAxisMargin: 10,
+                      mainAxisMargin: 10,
+                      minThumbLength: 20,
+                      thickness: MaterialStateProperty.all(8),
+                      radius: const Radius.circular(10),
+                    ),
+                    child: Scrollbar(
+                      thickness: 8,
+                      trackVisibility: true,
+                      thumbVisibility: true,
+                      child: ListView.builder(
+                        itemCount: cartItems.length,
+                        itemBuilder: (context, index) => ListTile(
+                          title: Text(
+                            '${cartItems.keys.elementAt(index).dishName}',
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Poppins',
+                            ),
+                          ),
+                          trailing: Text(
+                            '${cartItems.values.elementAt(index)}',
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Poppins',
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ),
-          ),
-          ElevatedButton(
-            
-            onPressed: () {
-             
-             showCustomDialog(context);
+                ElevatedButton(
+                  onPressed: () {
+                    showCustomDialog(context);
 
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) => const SuccessPage(),
-              //   ),
-              // );
-            },
-            style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
-            child: const Text('Place Order'),
-          ),
-        ],
-      ));
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) => const SuccessPage(),
+                    //   ),
+                    // );
+                  },
+                  style:
+                      ElevatedButton.styleFrom(backgroundColor: Colors.black),
+                  child: const Text('Place Order'),
+                ),
+              ],
+            ),
+          ));
     });
   }
-
-  
 }
