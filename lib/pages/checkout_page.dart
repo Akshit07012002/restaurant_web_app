@@ -89,7 +89,8 @@ class CheckoutPage extends StatelessWidget {
                   height: 20,
                 ),
                 SizedBox(
-                  height: screenHeight! * 0.5,
+                  height: screenHeight! * 0.35,
+                  width: screenWidth! * 0.8,
                   child: ScrollbarTheme(
                     data: ScrollbarThemeData(
                       thumbColor: MaterialStateProperty.all(Colors.yellow[400]),
@@ -107,6 +108,11 @@ class CheckoutPage extends StatelessWidget {
                       child: ListView.builder(
                         itemCount: cartItems.length,
                         itemBuilder: (context, index) => ListTile(
+                          contentPadding: EdgeInsets.fromLTRB(
+                              screenWidth! * 0.15,
+                              0,
+                              screenWidth! * 0.15,
+                              screenHeight! * 0.01),
                           title: Text(
                             '${cartItems.keys.elementAt(index).dishName}',
                             style: const TextStyle(
@@ -130,19 +136,20 @@ class CheckoutPage extends StatelessWidget {
                     ),
                   ),
                 ),
+                const SizedBox(
+                  height: 20,
+                ),
                 ElevatedButton(
                   onPressed: () {
-                    showCustomDialog(context);
-
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => const SuccessPage(),
-                    //   ),
-                    // );
+                    if (cartItems.isNotEmpty) showCustomDialog(context);
                   },
-                  style:
-                      ElevatedButton.styleFrom(backgroundColor: Colors.black),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: (cartItems.isNotEmpty)? Colors.black: Colors.grey[400],
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    minimumSize: Size(screenWidth! * 0.3, screenHeight! * 0.08),
+                  ),
                   child: const Text('Place Order'),
                 ),
               ],
