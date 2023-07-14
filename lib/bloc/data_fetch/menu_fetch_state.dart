@@ -17,9 +17,3 @@ class MenuFetchStateFailure extends MenuFetchState {}
 class MenuFetchStateRefresh extends MenuFetchState {}
 
 class MenuFetchStateLoadMore extends MenuFetchState {}
-
-// class MenuFetchStateSearch extends MenuFetchState {}
-
-// class MenuFetchStateSort extends MenuFetchState {}
-
-// class MenuFetchStateFilter extends MenuFetchState {}

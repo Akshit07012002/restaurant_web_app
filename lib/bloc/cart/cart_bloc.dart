@@ -22,7 +22,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
 
         totalCartSize = 0;
 
-        print('bloc cart size : ${totalCartSize}');
+        print('bloc cart size : $totalCartSize');
 
         if (cart.containsKey(event.dish)) {
           print('previous: ${cart[event.dish]}');
@@ -35,7 +35,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         print('cart inside bloc : $cart');
         cart.forEach((key, value) {
           totalCartSize += value;
-          print('total cart size inside: ${totalCartSize}');
+          print('total cart size inside: $totalCartSize');
         });
           // print('total cart size outside: ${totalCartSize}');
 
@@ -46,7 +46,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
 
         totalCartSize = 0;
 
-        print('bloc cart size : ${totalCartSize}');
+        print('bloc cart size : $totalCartSize');
 
         if (cart.containsKey(event.dish)) {
           if (cart[event.dish] == 1) {
@@ -61,7 +61,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         print('cart inside bloc : $cart');
         cart.forEach((key, value) {
           totalCartSize += value;
-          print('total cart size inside: ${totalCartSize}');
+          print('total cart size inside: $totalCartSize');
         });
 
         emit(CartStateSuccess(cart, totalCartSize));

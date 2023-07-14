@@ -38,6 +38,9 @@ class _TitleCardState extends State<TitleCard> {
                       ),
                     ),
                   ),
+                  const SizedBox(
+                    height: 10,
+                  ),
                   Padding(
                     padding: EdgeInsets.only(left: screenWidth! * 0.05),
                     child: Text(
@@ -62,28 +65,6 @@ class _TitleCardState extends State<TitleCard> {
             ),
           ],
         ),
-        // ListTile(
-        //   contentPadding: EdgeInsets.only(left: screenWidth! * 0.1),
-        //   title: Text(
-        //     'ManageResto',
-        //     style: TextStyle(
-        //       fontSize: screenWidth! * 0.045,
-        //       fontWeight: FontWeight.bold,
-        //     ),
-        //   ),
-        //   subtitle:  Text(
-        //     'Somewhere',
-        //     style: TextStyle(
-        //       fontSize: screenWidth! * 0.03,
-        //       fontWeight: FontWeight.bold,
-        //     ),
-        //   ),
-        //   trailing: Image.network(
-        //     'https://res.cloudinary.com/dmxopx7ab/image/upload/v1681538136/Icon_gjxhhy.png',
-        //     width: 200,
-        //     height: 200,
-        //   ),
-        // ),
       ),
     );
   }

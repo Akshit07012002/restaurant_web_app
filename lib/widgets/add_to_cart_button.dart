@@ -18,7 +18,7 @@ BlocBuilder<CartBloc, CartState> addToCartButton(
       int totalCartSize = state.totalCartSize;
 
       if (!cartItems.containsKey(dish) || cartItems[dish] == 0) {
-        return ElevatedButton(
+        return OutlinedButton(
           onPressed: () {
             // if (cartItems.contains(dish)) {
             //   // cartItems.remove(dish);
@@ -76,9 +76,9 @@ BlocBuilder<CartBloc, CartState> addToCartButton(
                                     MediaQuery.of(context).size.height * 0.02,
                               ),
                             ),
-                            child: Text(
+                            child: const Text(
                               'Checkout',
-                              style: TextStyle(color: Colors.yellow[400]),
+                              style: TextStyle(color: Colors.white),
                             ),
                             onPressed: () {
                               Navigator.pushNamed(context, '/order');
@@ -88,24 +88,23 @@ BlocBuilder<CartBloc, CartState> addToCartButton(
               ),
             );
           },
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.black,
+          style: OutlinedButton.styleFrom(
+            // backgroundColor: Colors.black,
+            side: const BorderSide(
+              color: Colors.black,
+              width: 1,
+            ),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(5),
             ),
-            padding: EdgeInsets.symmetric(
-              horizontal: MediaQuery.of(context).size.width * 0.05,
-              vertical: MediaQuery.of(context).size.height * 0.02,
-            ),
           ),
-          child: Text(
+          child: const Text(
             'ADD',
             style: TextStyle(
-              color: Colors.yellow[400],
-              fontFamily: 'Poppins',
+              color: Colors.black,
               fontWeight: FontWeight.bold,
               letterSpacing: 1.5,
-              fontSize: screenWidth! * 0.03,
+              fontSize: 14,
             ),
           ),
         );
@@ -170,10 +169,9 @@ BlocBuilder<CartBloc, CartState> addToCartButton(
                                                 0.02,
                                       ),
                                     ),
-                                    child: Text(
+                                    child: const Text(
                                       'Checkout',
-                                      style:
-                                          TextStyle(color: Colors.yellow[400]),
+                                      style: TextStyle(color: Colors.white),
                                     ),
                                     onPressed: () {
                                       Navigator.pushNamed(context, '/order');
@@ -188,11 +186,11 @@ BlocBuilder<CartBloc, CartState> addToCartButton(
                       color: Colors.black,
                       borderRadius: BorderRadius.circular(5),
                     ),
-                    child: Text(
+                    child: const Text(
                       '-',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          color: Colors.yellow[400],
+                          color: Colors.white,
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                           fontFamily: 'Poppins'),
@@ -210,8 +208,8 @@ BlocBuilder<CartBloc, CartState> addToCartButton(
                   child: Text(
                     '${cartItems[dish]}',
                     textAlign: TextAlign.center,
-                    style: TextStyle(
-                        color: Colors.yellow[400],
+                    style: const TextStyle(
+                        color: Colors.white,
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                         fontFamily: 'Poppins'),
@@ -271,10 +269,9 @@ BlocBuilder<CartBloc, CartState> addToCartButton(
                                                 0.02,
                                       ),
                                     ),
-                                    child: Text(
+                                    child: const Text(
                                       'Checkout',
-                                      style:
-                                          TextStyle(color: Colors.yellow[400]),
+                                      style: TextStyle(color: Colors.white),
                                     ),
                                     onPressed: () {
                                       Navigator.pushNamed(context, '/order');
@@ -289,11 +286,11 @@ BlocBuilder<CartBloc, CartState> addToCartButton(
                       color: Colors.black,
                       borderRadius: BorderRadius.circular(5),
                     ),
-                    child: Text(
+                    child: const Text(
                       '+',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          color: Colors.yellow[400],
+                          color: Colors.white,
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                           fontFamily: 'Poppins'),
